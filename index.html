@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Al Hadi — IT & Business student building real full-stack applications." />
+  <title>Al Hadi — Developer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-logo">AL<span>_</span>HADI</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-avail">
+          <div class="dot-green"></div>
+          Available for opportunities
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-layout">
+
+        <div class="hero-left">
+          <div class="hero-eyebrow">
+            <div class="eyebrow-line"></div>
+            <span class="eyebrow-text">Full-Stack Developer</span>
+          </div>
+          <h1>
+            AL<br>
+            <span class="outline">HADI.</span>
+          </h1>
+          <p class="hero-sub">
+            Mahasiswa IT & Bisnis yang membangun <strong>tools nyata untuk orang nyata</strong>.
+            Dari aplikasi manajemen nilai yang dipakai guru beneran,
+            sampai full-stack task manager dengan FastAPI & React —
+            gw ship sesuatu yang kerja.
+          </p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn btn-fill">Lihat Projects →</a>
+            <a href="#contact"  class="btn btn-line">Get in Touch</a>
+          </div>
+        </div>
+
+        <!-- info card -->
+        <div class="info-card">
+          <div class="card-head">// profile.json</div>
+          <div class="info-row">
+            <span class="ik">name</span>
+            <span class="iv">Al Hadi</span>
+          </div>
+          <div class="info-row">
+            <span class="ik">focus</span>
+            <span class="iv acc">Full-Stack Dev</span>
+          </div>
+          <div class="info-row">
+            <span class="ik">stack</span>
+            <span class="iv">React · FastAPI · Python</span>
+          </div>
+          <div class="info-row">
+            <span class="ik">apps_deployed</span>
+            <span class="iv acc">2</span>
+          </div>
+          <div class="info-row">
+            <span class="ik">currently_building</span>
+            <span class="iv ora">Taskly</span>
+          </div>
+          <div class="info-row">
+            <span class="ik">status</span>
+            <span class="iv acc">open_to_work</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">ABOUT <span>ME</span></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-copy reveal d1">
+          <p>
+            Gw mahasiswa <strong>Teknologi Informasi & Bisnis/Ekonomi</strong> yang
+            belajar dengan cara langsung membangun sesuatu — bukan nonton tutorial terus.
+          </p>
+          <p>
+            Setiap konsep yang gw pelajari langsung gw terapkan ke project nyata.
+            Dari vanilla JavaScript sampai full-stack dengan FastAPI & Supabase,
+            gw terus dorong diri sendiri ke level berikutnya.
+          </p>
+          <p>
+            Saat ini fokus ke <strong>web development full-stack</strong> dengan arsitektur
+            yang scalable: React di frontend, FastAPI di backend, dan cloud-first deployment.
+            Goal jangka pendek: landing freelance client pertama.
+          </p>
+        </div>
+
+        <div class="reveal d2">
+          <div class="skill-group">
+            <div class="sg-label">Frontend</div>
+            <div class="sg-pills">
+              <span class="pill">React</span>
+              <span class="pill">PWA</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">HTML/CSS</span>
+              <span class="pill">Vercel</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-label">Backend</div>
+            <div class="sg-pills">
+              <span class="pill">FastAPI</span>
+              <span class="pill">Python</span>
+              <span class="pill">REST API</span>
+              <span class="pill">Pydantic</span>
+              <span class="pill">Railway</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-label">Database & Tools</div>
+            <div class="sg-pills">
+              <span class="pill">Supabase</span>
+              <span class="pill">Firebase</span>
+              <span class="pill">Git & GitHub</span>
+              <span class="pill">SheetJS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">THINGS I'VE <span>BUILT</span></h2>
+      </div>
+      <!-- Cards di-render oleh script.js dari projects.js -->
+      <div class="projects-list" id="projects-list"></div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">GET IN <span>TOUCH</span></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal d1">
+          <div class="contact-head">LET'S<br><span>CONNECT.</span></div>
+          <p class="contact-sub">
+            Terbuka untuk kolaborasi, project freelance,
+            dan diskusi menarik seputar tech.
+          </p>
+          <div class="contact-items">
+            <a href="mailto:alhadiworking@gmail.com" class="c-item">
+              <div class="c-left">
+                <span class="c-label">Email</span>
+                <span class="c-val">alhadiworking@gmail.com</span>
+              </div>
+              <span class="c-arrow">↗</span>
+            </a>
+            <a href="https://github.com/Grounded-labs-ctrl" target="_blank" class="c-item">
+              <div class="c-left">
+                <span class="c-label">GitHub</span>
+                <span class="c-val">Grounded-labs-ctrl</span>
+              </div>
+              <span class="c-arrow">↗</span>
+            </a>
+            <a href="https://www.instagram.com/alhadi_dwd" target="_blank" class="c-item">
+              <div class="c-left">
+                <span class="c-label">Instagram</span>
+                <span class="c-val">@alhadi_dwd</span>
+              </div>
+              <span class="c-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-deco reveal d2">HADI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="f-copy">© 2025 Al Hadi</span>
+        <span class="f-made">Built from scratch — <span>deployed for real.</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Data dulu, baru script -->
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
