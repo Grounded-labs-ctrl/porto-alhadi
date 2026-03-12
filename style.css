@@ -28,7 +28,6 @@ body {
   font-size: 15px;
   line-height: 1.65;
   overflow-x: hidden;
-  cursor: none;
 }
 
 /* Noise */
@@ -40,27 +39,41 @@ body::after {
   z-index: 9000;
 }
 
-/* ── CURSOR ── */
-.cursor {
-  width: 8px; height: 8px;
-  background: var(--accent);
+/* ── AMBIENT ORBS ── */
+.orb {
+  position: absolute;
   border-radius: 50%;
-  position: fixed;
   pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  mix-blend-mode: difference;
-  transition: width .15s, height .15s;
+  filter: blur(80px);
+  opacity: 0;
+  animation: orb-fade-in 2s ease forwards;
 }
-.cursor-ring {
-  width: 32px; height: 32px;
-  border: 1px solid rgba(232,255,71,.35);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: all .12s ease;
+.orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(232,255,71,.07) 0%, transparent 70%);
+  top: -100px; left: -150px;
+  animation: orb-fade-in 2s ease forwards, orb-drift-1 18s ease-in-out infinite 2s;
+}
+.orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,107,53,.05) 0%, transparent 70%);
+  bottom: -80px; right: -100px;
+  animation: orb-fade-in 2.5s ease forwards, orb-drift-2 22s ease-in-out infinite 2.5s;
+}
+
+@keyframes orb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes orb-drift-1 {
+  0%,100% { transform: translate(0, 0); }
+  33%     { transform: translate(40px, 30px); }
+  66%     { transform: translate(-20px, 50px); }
+}
+@keyframes orb-drift-2 {
+  0%,100% { transform: translate(0, 0); }
+  33%     { transform: translate(-30px, -40px); }
+  66%     { transform: translate(20px, -20px); }
 }
 
 /* ── LAYOUT ── */
@@ -144,6 +157,14 @@ nav {
 .eyebrow-text {
   font-family: var(--mono); font-size: 10px;
   letter-spacing: .2em; text-transform: uppercase; color: var(--accent);
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typewriter 1.2s steps(28) 0.4s forwards;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 22ch; }
 }
 
 h1 {
@@ -169,11 +190,25 @@ h1 .outline { color: transparent; -webkit-text-stroke: 1px #fff; }
   border: 1px solid var(--border2);
   padding: 28px 28px 20px;
   position: relative;
+  overflow: hidden;
 }
 .info-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, var(--accent), var(--orange));
+}
+/* scan line sweeps down repeatedly */
+.info-card::after {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(232,255,71,.03), transparent);
+  animation: scan 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes scan {
+  0%   { top: -40px; }
+  100% { top: 100%; }
 }
 .card-head {
   font-family: var(--mono); font-size: 9px;
@@ -197,7 +232,7 @@ h1 .outline { color: transparent; -webkit-text-stroke: 1px #fff; }
   font-family: var(--mono); font-size: 10px;
   letter-spacing: .1em; text-transform: uppercase;
   text-decoration: none; border-radius: 2px;
-  transition: all .2s; border: none; cursor: none;
+  transition: all .2s; border: none; cursor: pointer;
 }
 .btn-fill { background: var(--accent); color: #080808; font-weight: 500; }
 .btn-fill:hover { background: #fff; transform: translateY(-1px); }
@@ -361,6 +396,23 @@ footer { padding: 22px 0; border-top: 1px solid var(--border); }
   from { opacity:0; transform: translateY(28px); }
   to   { opacity:1; transform: translateY(0); }
 }
+
+/* hero stagger */
+.hero-eyebrow { animation: fadeUp .6s ease both .1s; }
+h1            { animation: fadeUp .7s ease both .25s; }
+.hero-sub     { animation: fadeUp .7s ease both .4s; }
+.hero-btns    { animation: fadeUp .7s ease both .55s; }
+.info-card    { animation: fadeUp .8s ease both .5s; }
+
+/* contact deco float */
+.contact-deco {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-12px); }
+}
+
 .reveal { opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity:1; transform: translateY(0); }
 .d1 { transition-delay: .1s; }

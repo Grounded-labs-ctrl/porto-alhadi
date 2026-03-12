@@ -1,52 +1,10 @@
 /* ─────────────────────────────────────────
    script.js
-   1. Custom cursor
-   2. Scroll reveal
-   3. Dynamic project rendering from projects.js
+   1. Scroll reveal
+   2. Dynamic project rendering from projects.js
 ───────────────────────────────────────── */
 
-// ── 1. CUSTOM CURSOR ──────────────────────
-const cursor     = document.querySelector('.cursor');
-const cursorRing = document.querySelector('.cursor-ring');
-
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top  = mouseY + 'px';
-});
-
-// Ring follows with slight lag
-function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
-
-// Grow cursor on hoverable elements
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width  = '18px';
-    cursor.style.height = '18px';
-    cursorRing.style.width  = '50px';
-    cursorRing.style.height = '50px';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width  = '8px';
-    cursor.style.height = '8px';
-    cursorRing.style.width  = '32px';
-    cursorRing.style.height = '32px';
-  });
-});
-
-
-// ── 2. SCROLL REVEAL ──────────────────────
+// ── 1. SCROLL REVEAL ──────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -58,7 +16,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
-// ── 3. DYNAMIC PROJECT RENDERING ──────────
+// ── 2. DYNAMIC PROJECT RENDERING ──────────
 function getBadge(status) {
   const map = {
     live:     { cls: 'badge-live',     label: 'Live' },
@@ -73,7 +31,7 @@ function renderProjects() {
   if (!container || typeof projects === 'undefined') return;
 
   container.innerHTML = projects.map((p, i) => {
-    const badge = getBadge(p.status);
+    const badge    = getBadge(p.status);
     const techHTML = p.tech.map(t => `<span class="t-tag">${t}</span>`).join('');
 
     const linksHTML = [
@@ -89,11 +47,9 @@ function renderProjects() {
             <span class="badge ${badge.cls}">${badge.label}</span>
           </div>
         </div>
-
         <div class="proj-name">${p.name}</div>
         <div class="proj-tagline">${p.tagline}</div>
         <div class="proj-divider"></div>
-
         <div class="proj-body">
           <p class="proj-desc">${p.desc}</p>
           <div class="proj-right">
@@ -106,9 +62,7 @@ function renderProjects() {
     `;
   }).join('');
 
-  // Re-observe newly rendered cards
   container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 }
 
-// Run after DOM is ready
 document.addEventListener('DOMContentLoaded', renderProjects);
