@@ -160,11 +160,11 @@ nav {
   overflow: hidden;
   white-space: nowrap;
   width: 0;
-  animation: typewriter 1.2s steps(28) 0.4s forwards;
+  animation: typewriter 1.4s steps(32) 0.4s forwards;
 }
 @keyframes typewriter {
   from { width: 0; }
-  to   { width: 22ch; }
+  to   { width: 100%; }
 }
 
 h1 {
