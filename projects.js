@@ -5,7 +5,7 @@ const projects = [
     tagline: "Grade management for real teachers.",
     desc: "PWA manajemen nilai siswa yang dibangun untuk — dan aktif dipakai oleh — guru beneran. Menggantikan spreadsheet manual dengan sistem sync multi-perangkat, ranking otomatis, penilaian ekstrakurikuler, dan ekspor laporan Excel satu klik.",
     status: "live",
-    year: "2024",
+    year: "2025",
     tech: ["PWA", "Firebase Firestore", "JavaScript", "SheetJS", "Vercel"],
     link: null,
     github: null,
